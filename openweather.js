@@ -1,3 +1,3 @@
 let div = document.createElement('div')
-div.innerHTML = "<p>Привет мир-погода</p>"
+div.innerHTML = "<p>Привет погода</p>"
 document.body.append(div);
