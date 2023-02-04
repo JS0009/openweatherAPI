@@ -6,12 +6,13 @@ const url = weatherArray.map(async url => {
         const data = await respons.json()
         console.log(data)
     } catch (err) {
-        console.log(err)
+        alert(err)
     }
+    let div = document.createElement('div')
+    let img = document.createElement('img')
+    img.setAttribute('src', './svg/compass .svg')
+    div.innerHTML = "<p>Привет погода</p>"
+    document.body.append(div, img);
+    document.body.style.backgroundColor = 'blue'
 })
-// let div = document.createElement('div')
-// let img = document.createElement('img')
-// img.setAttribute('src', './svg/compass .svg')
-// div.innerHTML = "<p>Привет погода</p>"
-// document.body.append(div, img);
 
