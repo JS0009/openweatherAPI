@@ -4,6 +4,7 @@ const url = weatherArray.map(async url => {
     try {
         const respons = await fetch(url)
         const data = await respons.json()
+        console.log(data)
 
 
         let div = document.createElement('div')
@@ -26,14 +27,17 @@ const url = weatherArray.map(async url => {
 
 
         const time = new Date(data.dt * 1000).toLocaleString('en-En', options)
-        img.setAttribute('src', './svg/compass .svg')
+
+        //img.setAttribute('src', './svg/compass .svg')
         div.append(span.innerHTML = time)
         div.append(br)
-        div.append(h2.innerHTML = data.name)
+        div.append(h2.innerHTML = data.name, ' ', data.sys.country)
 
-        document.body.append(div, img);
+
+        document.body.append(div);
         document.body.style.backgroundColor = ''
         document.body.style.display = 'block'
+
     } catch (err) {
         alert(err)
     }
