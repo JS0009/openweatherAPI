@@ -26,15 +26,13 @@ const url = weatherArray.map(async url => {
 
 
 
-        const time = new Date(data.dt * 1000).toLocaleString('en-En', options)
+        const time = new Date(data.dt * 1000).toLocaleString('us-US', options)
 
         //img.setAttribute('src', './svg/compass .svg')
-        div.append(span.innerHTML = time)
-        div.append(br)
-        div.append(h2.innerHTML = data.name, ' ', data.sys.country)
+        div.innerHTML = `<span>${time}</span> <h2>${data.name} ${data.sys.country}</h2>`
 
 
-        document.body.append(div);
+        document.body.append(div, img)
         document.body.style.backgroundColor = ''
         document.body.style.display = 'block'
 
