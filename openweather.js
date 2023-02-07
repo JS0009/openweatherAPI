@@ -1,4 +1,4 @@
-const weatherArray = ['https://api.openweathermap.org/data/2.5/weather?lat=55.7522&lon=37.6156&appid=1ccf606771220f99ee80e304554cf375', 'https://api.openweathermap.org/data/2.5/weather?lat=51.5085&lon=-0.12574&appid=1ccf606771220f99ee80e304554cf375']
+const weatherArray = ['https://api.openweathermap.org/data/2.5/weather?lat=55.7522&lon=37.6156&appid=1ccf606771220f99ee80e304554cf375', 'https://api.openweathermap.org/data/2.5/weather?lat=51.5085&lon=-0.12574&appid=1ccf606771220f99ee80e304554cf375', 'https://api.openweathermap.org/data/2.5/weather?lat=43.9336&lon=42.5107&appid=1ccf606771220f99ee80e304554cf375']
 
 const url = weatherArray.map(async url => {
     try {
@@ -102,7 +102,7 @@ const url = weatherArray.map(async url => {
         document.body.append(div)
 
     } catch (err) {
-        alert(err)
+        console.log(err)
     }
 })
 
