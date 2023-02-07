@@ -23,7 +23,51 @@ const url = weatherArray.map(async url => {
         const celsius = Math.trunc(data.main.temp - 273)
         const feels_like = Math.trunc(data.main.feels_like - 273)
         const descrip = data.weather[0].description[0].toUpperCase() + data.weather[0].description.slice(1)
+        const speed = data.wind.speed
+        let speedString
 
+        if (speed) {
+            if (speed <= 0, 2) {
+                speedString = 'calm'
+
+            } else if (speed <= 1, 5) {
+                speedString = 'quiet'
+
+            } else if (speed <= 3, 3) {
+                speedString = 'light breeze'
+
+            } else if (speed <= 5, 4) {
+                speedString = 'light wind'
+
+            } else if (speed <= 7, 9) {
+                speedString = 'moderate'
+
+            } else if (speed <= 10, 7) {
+                speedString = 'fresh'
+
+            } else if (speed <= 13, 8) {
+                speedString = 'strong'
+
+            } else if (speed <= 17, 1) {
+                speedString = 'hard'
+
+            } else if (speed <= 20, 7) {
+                speedString = 'very hard'
+
+            } else if (speed <= 24, 4) {
+                speedString = 'storm'
+
+            } else if (speed <= 28, 4) {
+                speedString = 'hard storm'
+
+            } else if (speed <= 32, 6) {
+                speedString = 'violent storm'
+
+            } else if (speed >= 32, 7) {
+                speedString = 'HURRICANE'
+
+            } else { }
+        }
 
         div.innerHTML =
             `
@@ -41,7 +85,8 @@ const url = weatherArray.map(async url => {
                     ${celsius}\xB0C 
                     </span>
                 </div>
-                <div>Feels like ${feels_like}\xB0C. ${descrip}
+                <div>
+                    Feels like ${feels_like}\xB0C. ${descrip}. Wind status: ${speedString}
                 </div>
                 <ul>
                     <li></li>
