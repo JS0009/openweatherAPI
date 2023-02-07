@@ -22,6 +22,7 @@ const url = weatherArray.map(async url => {
 
         const celsius = Math.trunc(data.main.temp - 273)
         const feels_like = Math.trunc(data.main.feels_like - 273)
+        const descrip = data.weather[0].description[0].toUpperCase() + data.weather[0].description.slice(1)
 
 
         div.innerHTML =
@@ -30,7 +31,7 @@ const url = weatherArray.map(async url => {
                 ${time}
             </span>
             <h2>
-                ${data.name}${data.sys.country}
+                ${data.name} ${data.sys.country}
             </h2>
             <div>
                 <div>
@@ -40,7 +41,8 @@ const url = weatherArray.map(async url => {
                     ${celsius}\xB0C 
                     </span>
                 </div>
-                <div>Feels like ${feels_like}\xB0C </div>
+                <div>Feels like ${feels_like}\xB0C. ${descrip}
+                </div>
                 <ul>
                     <li></li>
                     <li></li>
