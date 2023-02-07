@@ -20,6 +20,9 @@ const url = weatherArray.map(async url => {
         }
         const time = new Date(data.dt * 1000).toLocaleString('us-US', options)
 
+        const celsius = Math.trunc(data.main.temp - 273)
+        const feels_like = Math.trunc(data.main.feels_like - 273)
+
 
         div.innerHTML =
             `
@@ -33,10 +36,11 @@ const url = weatherArray.map(async url => {
                 <div>
                     <img src='http://openweathermap.org/img/w/${data.weather[0].icon}.png'>
                     </img>
-                    <span>
+                    <span class ="celsius">
+                    ${celsius}\xB0C 
                     </span>
                 </div>
-                <div></div>
+                <div>Feels like ${feels_like}\xB0C </div>
                 <ul>
                     <li></li>
                     <li></li>
