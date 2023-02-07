@@ -96,6 +96,7 @@ const url = weatherArray.map(async url => {
                     <li></li>
                     <li></li>
                 </ul>
+                <hr/>
             </div>
         `
         document.body.append(div)
