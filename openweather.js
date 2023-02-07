@@ -6,12 +6,7 @@ const url = weatherArray.map(async url => {
         const data = await respons.json()
         console.log(data)
 
-
         let div = document.createElement('div')
-        let h2 = document.createElement('h2')
-        let br = document.createElement('br')
-        let span = document.createElement('span')
-        let img = document.createElement('img')
         let options = {
             era: 'long',
             year: 'numeric',
@@ -23,21 +18,61 @@ const url = weatherArray.map(async url => {
             minute: 'numeric',
             second: 'numeric',
         }
-
-
-
         const time = new Date(data.dt * 1000).toLocaleString('us-US', options)
 
-        //img.setAttribute('src', './svg/compass .svg')
-        div.innerHTML = `<span>${time}</span> <h2>${data.name} ${data.sys.country}</h2>`
 
 
-        document.body.append(div, img)
-        document.body.style.backgroundColor = ''
-        document.body.style.display = 'block'
+        div.innerHTML =
+            `
+            <span>
+                ${time}
+            </span>
+            <h2>
+                ${data.name}${data.sys.country}
+            </h2>
+            <div>
+                <div>
+                    <svg>
+                    </svg>
+                    <span>
+                    </span>
+                </div>
+                <div></div>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        `
+        document.body.append(div)
+
+        // div.insertAdjacentHTML("afterend",
+        //     `
+        //     <div>
+        //         <div>
+        //             <svg>
+        //             </svg>
+        //             <span>
+        //             </span>
+        //         </div>
+        //         <div></div>
+        //         <ul>
+        //             <li></li>
+        //             <li></li>
+        //             <li></li>
+        //             <li></li>
+        //             <li></li>
+        //         </ul>
+        //     </div>
+        //     `)
+
 
     } catch (err) {
         alert(err)
     }
 })
+
 
