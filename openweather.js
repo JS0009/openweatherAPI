@@ -21,7 +21,6 @@ const url = weatherArray.map(async url => {
         const time = new Date(data.dt * 1000).toLocaleString('us-US', options)
 
 
-
         div.innerHTML =
             `
             <span>
@@ -32,8 +31,8 @@ const url = weatherArray.map(async url => {
             </h2>
             <div>
                 <div>
-                    <svg>
-                    </svg>
+                    <img src='http://openweathermap.org/img/w/${data.weather[0].icon}.png'>
+                    </img>
                     <span>
                     </span>
                 </div>
@@ -48,27 +47,6 @@ const url = weatherArray.map(async url => {
             </div>
         `
         document.body.append(div)
-
-        // div.insertAdjacentHTML("afterend",
-        //     `
-        //     <div>
-        //         <div>
-        //             <svg>
-        //             </svg>
-        //             <span>
-        //             </span>
-        //         </div>
-        //         <div></div>
-        //         <ul>
-        //             <li></li>
-        //             <li></li>
-        //             <li></li>
-        //             <li></li>
-        //             <li></li>
-        //         </ul>
-        //     </div>
-        //     `)
-
 
     } catch (err) {
         alert(err)
