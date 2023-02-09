@@ -7,6 +7,7 @@ const url = weatherArray.map(async url => {
         console.log(data)
 
         let div = document.createElement('div')
+        let style = document.createElement('style')
         let options = {
             era: 'long',
             year: 'numeric',
@@ -20,11 +21,12 @@ const url = weatherArray.map(async url => {
         }
         const time = new Date(data.dt * 1000).toLocaleString('us-US', options)
 
-        const celsius = Math.trunc(data.main.temp - 273)
+        const celsius = Math.trunc(data.main.temp_min - 273)
         const feels_like = Math.trunc(data.main.feels_like - 273)
         const descrip = data.weather[0].description[0].toUpperCase() + data.weather[0].description.slice(1)
         let speed = data.wind.speed
-        console.log(speed)
+        let deg = data.wind.deg
+        console.log(deg)
         let speedString
 
 
@@ -90,7 +92,13 @@ const url = weatherArray.map(async url => {
                     Feels like ${feels_like}\xB0C. ${descrip}. Wind status: ${speedString}
                 </div>
                 <ul>
-                    <li></li>
+                    <li>
+                        <div>
+                            <svg class="speed" width="12" height="10" viewBox="0 0 106 79" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill="black" d="M105.5 77.8268L1.44252 46.4132L105.5 0.765333V39.25V77.8268Z" stroke="black" />
+                            </svg>
+                        </div>
+                    </li>
                     <li></li>
                     <li></li>
                     <li></li>
@@ -100,6 +108,24 @@ const url = weatherArray.map(async url => {
             </div>
         `
         document.body.append(div)
+
+
+        let removeSt = document.querySelector('head')
+        console.log(removeSt)
+
+        if (head.style) {
+            removeSt.removeChild(style)
+
+        } else {
+
+            style.innerHTML =
+                `
+            .speed{
+                transform: rotate(${deg}deg);
+            }
+            `
+            document.head.append(style)
+        }
 
     } catch (err) {
         console.log(err)
