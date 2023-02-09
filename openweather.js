@@ -108,7 +108,6 @@ const url = weatherArray.map(async url => {
                         </div>
                     </li>
                     <li> Humidity: ${data.main.humidity}%&nbsp &nbsp &nbsp Visibility:${data.visibility}km</li>
-                    <li></li>
                 </ul>
                 <hr/>
             </div>
