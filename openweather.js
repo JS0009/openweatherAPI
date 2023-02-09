@@ -1,5 +1,8 @@
 const weatherArray = ['https://api.openweathermap.org/data/2.5/weather?lat=55.7522&lon=37.6156&appid=1ccf606771220f99ee80e304554cf375', 'https://api.openweathermap.org/data/2.5/weather?lat=51.5085&lon=-0.12574&appid=1ccf606771220f99ee80e304554cf375', 'https://api.openweathermap.org/data/2.5/weather?lat=43.9336&lon=42.5107&appid=1ccf606771220f99ee80e304554cf375']
 
+let style = document.createElement('style')
+document.head.append(style)
+
 const url = weatherArray.map(async url => {
     try {
         const respons = await fetch(url)
@@ -7,7 +10,6 @@ const url = weatherArray.map(async url => {
         console.log(data)
 
         let div = document.createElement('div')
-        let style = document.createElement('style')
         let options = {
             era: 'long',
             year: 'numeric',
@@ -26,8 +28,10 @@ const url = weatherArray.map(async url => {
         const descrip = data.weather[0].description[0].toUpperCase() + data.weather[0].description.slice(1)
         let speed = data.wind.speed
         let deg = data.wind.deg
-        console.log(deg)
-        let speedString
+        let cityName = data.name
+        console.log(cityName)
+
+        let speedString;
 
 
         if (speed <= 1.4) {
@@ -94,7 +98,7 @@ const url = weatherArray.map(async url => {
                 <ul>
                     <li>
                         <div>
-                            <svg class="speed" width="12" height="10" viewBox="0 0 106 79" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="speed${data.name}" width="12" height="10" viewBox="0 0 106 79" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill="black" d="M105.5 77.8268L1.44252 46.4132L105.5 0.765333V39.25V77.8268Z" stroke="black" />
                             </svg>
                         </div>
@@ -110,22 +114,13 @@ const url = weatherArray.map(async url => {
         document.body.append(div)
 
 
-        let removeSt = document.querySelector('head')
-        console.log(removeSt)
-
-        if (head.style) {
-            removeSt.removeChild(style)
-
-        } else {
-
-            style.innerHTML =
-                `
-            .speed{
-                transform: rotate(${deg}deg);
-            }
-            `
-            document.head.append(style)
+        style.insertAdjacentHTML
+            ("afterbegin", `
+        .speed${data.name}{
+            transform: rotate(${deg}deg);
         }
+            `)
+
 
     } catch (err) {
         console.log(err)
