@@ -100,12 +100,14 @@ const url = weatherArray.map(async url => {
                         <div>
                             <svg class="speed${data.name}" width="12" height="10" viewBox="0 0 106 79" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill="black" d="M105.5 77.8268L1.44252 46.4132L105.5 0.765333V39.25V77.8268Z" stroke="black" />
-                            </svg>
+                            </svg> ${speed}m/s SW &nbsp &nbsp &nbsp <svg width="20" height="11" viewBox="0 0 135 114" fill="black" xmlns="http://www.w3.org/2000/svg">
+                            <ellipse cx="67.5" cy="57" rx="67.5" ry="57" fill="#bdbcbb"/>
+                             <path d="M107 30L67 65L59 55L107 30Z" stroke="black"/>
+                            </svg>${data.main.pressure}hPa
+
                         </div>
                     </li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                    <li> Humidity: ${data.main.humidity}%&nbsp &nbsp &nbsp Visibility:${data.visibility}km</li>
                     <li></li>
                 </ul>
                 <hr/>
